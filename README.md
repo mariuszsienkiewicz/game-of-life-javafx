@@ -2,9 +2,9 @@
 
 ## Information
 
+![visualization](https://github.com/mariuszsienkiewicz/game-of-life-javafx/raw/master/assets/visualization.gif "Visualization")
+
 Basic and easy implementation of the Game of Life cellular automaton. It uses the JavaFX library for the visual presentation and it uses some of the MVC rules.
-
-
 
 ## About the Game of Life
 
