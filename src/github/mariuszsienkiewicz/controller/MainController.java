@@ -23,7 +23,7 @@ public class MainController {
     }
 
     public void createTimeline() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(timeBetweenStepsInMilliseconds), e->nextStep()));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(this.timeBetweenStepsInMilliseconds), e->nextStep()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
@@ -45,23 +45,21 @@ public class MainController {
     public void generateNextStep() {
         Cell[][] tmp = Cell.clone2DCellArray(this.cells);
 
-        for (int x = 0; x < numberOfCells; x++) {
-            for (int y = 0; y < numberOfCells; y++) {
+        for (int x = 0; x < this.numberOfCells; x++) {
+            for (int y = 0; y < this.numberOfCells; y++) {
                 Cell[] neighbours = Cell.getNeighbours(tmp, x, y);
-                int aliveCounter = Cell.aliveCells(neighbours);
+                int numberOfAliveNeighbours = Cell.aliveCells(neighbours);
 
                 if (tmp[x][y].isAlive()) {
-                    this.cells[x][y].setAlive(aliveCounter == 2 || aliveCounter == 3);
+                    this.cells[x][y].setAlive(numberOfAliveNeighbours == 2 || numberOfAliveNeighbours == 3);
                 } else {
-                    this.cells[x][y].setAlive(aliveCounter == 3);
+                    this.cells[x][y].setAlive(numberOfAliveNeighbours == 3);
                 }
             }
         }
     }
 
     private void updateView() {
-        generateNextStep();
-
-        this.view.update(cells);
+        this.view.update(this.cells);
     }
 }
