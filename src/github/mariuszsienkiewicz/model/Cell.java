@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Cell implements Cloneable {
+public class Cell {
     private boolean alive;
     private Color color;
 
@@ -57,7 +57,9 @@ public class Cell implements Cloneable {
         return tmp;
     }
 
-    /** nw n ne
+    /**
+     *  There is some information about the cell positions:
+     *  nw n ne
      *  w  # e
      *  sw s se
      */
